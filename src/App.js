@@ -7,6 +7,22 @@ function App() {
 
 //alright, gonna make this my leetcode practice 
 
+function onCheck() {
+  const button = document.querySelector('#button')
+  
+  const disableButton = () => {
+    button.disabled = true;
+  }
+
+
+}
+
+function overlap(a, b, c, d) {
+  if (b[0] < c[0] || a[0] > d[0] || a[1] < d[1] || b[1] > c[1]) {
+    return false
+  }
+  return true
+}
 
 function anagram(a, b) {
   if (a.length != b.length) {
