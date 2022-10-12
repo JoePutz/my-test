@@ -17,6 +17,23 @@ function onCheck() {
 
 }
 
+function isPrime(a) {
+  if (a === 1 ) {
+    return false
+  }
+  else {
+    for (i = 2; 1< a; 1++) {
+      if (a % i === 0) {
+        return false
+      }
+      else {
+        return true
+      }
+    }
+  }
+
+}
+
 function overlap(a, b, c, d) {
   if (b[0] < c[0] || a[0] > d[0] || a[1] < d[1] || b[1] > c[1]) {
     return false
