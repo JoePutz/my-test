@@ -7,6 +7,26 @@ function App() {
 
 //alright, gonna make this my leetcode practice 
 
+var checkIfPangram = function(x) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  let z = x.split("")
+  let count = 0
+  let alphabet1=alphabet.split("")
+  for (i=0; i<alphabet1.length; i++) {
+      let letter = alphabet1[i]
+      if (z.indexOf(letter) > -1) {
+          count++
+      }
+      
+      if (count >= 26) {
+          return true
+      }
+      else {
+          return flase
+      }
+  }
+  }
+
 function onCheck() {
   const button = document.querySelector('#button')
   
