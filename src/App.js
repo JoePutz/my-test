@@ -17,13 +17,13 @@ var checkIfPangram = function(x) {
       if (z.indexOf(letter) > -1) {
           count++
       }
-      
+      }
+          
       if (count >= 26) {
           return true
       }
       else {
-          return flase
-      }
+          return false
   }
   }
 
