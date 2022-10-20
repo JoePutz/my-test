@@ -99,6 +99,117 @@ function anagram(a, b) {
   }
 }
 
+function toLatin (num) {
+  let thousands = Math.floor(num / 1000)
+  let hundreds = Math.floor((num % 1000) / 100)
+  let tens = Math.floor((num % 100) / 10)
+  let ones = num % 10
+    
+    let result = ""
+    
+    if (thousands !== 0 ) {
+        for (i=0 ; i < thousands; i++) {
+            result += "M"
+        }
+    }
+    if (hundreds !== 0) {
+        if (hundreds === 9) {
+            result += "CM"
+        }
+        else if (hundreds >= 5) {
+            result += "D"
+            for (i=5; i < hundreds; i++) {
+                result += "C"
+            }
+        }
+        else if (hundreds === 4) {
+            result += "CD"
+        }
+        
+        else {
+            for (i=0; i < hundreds; i++) {
+                result += "C"
+            }
+        }
+    }
+    if (tens !== 0) {
+        if (tens === 9) {
+            result += "XC"
+        }
+        else if (tens >= 5) {
+            result += "L"
+            for (i=5; i < tens; i++) {
+                result += "X"
+            }
+        }
+        else if (tens === 4) {
+            result += "XL"
+        }
+        else {
+            for (i=0; i < tens; i++) {
+                result += "X"
+            }
+        }
+    }
+    
+    if (ones !== 0) {
+        if (ones === 9) {
+            result += "IX"
+        }
+        else if (ones >= 5) {
+            result += "V"
+            for (i=5; i< ones; i++) {
+                result += "I"
+            }
+        }
+        else if (ones === 4) {
+            result += "IV"
+        }
+        
+        else {
+            for (i=0; i < ones; i++) {
+                result += "I"
+            }
+        }
+    }
+    
+    return result
+    
+//   const map = {
+//     M: 1000,
+//     CM: 900,
+//     D: 500,
+//     CD: 400,
+//     C: 100,
+//     XC: 90,
+//     L: 50,
+//     XL: 40,
+//     X: 10,
+//     IX: 9,
+//     V: 5,
+//     IV: 4,
+//     I: 1,
+//   };
+//   let result = '';
+  
+//   for (key in map) {  
+//     const repeatCounter = Math.floor(num / map[key]);
+    
+//     if (repeatCounter !== 0) {
+//       result += key.repeat(repeatCounter);
+//     }
+    
+//     num %= map[key];
+    
+//     if (num === 0) return result;
+//   }
+  
+//   return result;
+// note to self, learn map
+    
+};
+}
+
 
 
 
