@@ -211,6 +211,36 @@ function toLatin (num) {
 }
 
 
+var maxArea = function(height) {
+    
+  //     let area = 0
+      
+  //     for (i = 0; i < height.length -1; i++){
+  //         for (j = i+1; j < height.length; j++) {
+  //             let newArea = (j-i) * Math.min(height[i], height[j])
+  //             area = Math.max(area, newArea)
+  //         }
+  //     }
+      
+  //     return area
+      
+      
+      let i = 0
+      let j = height.length -1 
+      let max = 0
+      let area
+      while (i < j) {
+          area = (j - i) * Math.min(height[i], height[j])
+          
+          max = Math.max(area, max)
+          
+          height[i] < height[j] ? i++ : j--
+      }
+      
+      return max
+      
+  };
+
 
 
 
