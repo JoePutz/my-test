@@ -299,6 +299,26 @@ var maxArea = function(height) {
 
 
 
+var arrayStringsAreEqual = function(word1, word2) {
+  word1 = word1.join("")
+  word2 = word2.join("")
+  return word1 === word2
+//     let stringWord1 = word1.toString().replaceAll(',', '')
+//     console.log(stringWord1)
+//     let stringWord2 = word2.toString().replaceAll(',', '')
+//     console.log(stringWord2)
+  
+//     if (stringWord1 == stringWord2) {
+//         return true
+//     }
+//     else {
+//         return false
+//     }
+  
+};
+
+
+
 
 
 const [brettNum, setBrettNum] = useState(0)
