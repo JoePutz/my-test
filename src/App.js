@@ -337,8 +337,22 @@ for (var i = 1 - len; i < len; i++) {
 return res;
 };
 
-
-
+//in this code i am given an array, and I have to change the array so that all the unique nubmers are in the front of the array
+var removeDuplicates = function(nums) {
+  let i = 0
+  let j = 1
+  while (j < nums.length) {
+      if (nums[i] !== nums[j]) {
+          i++
+          nums[i] = nums[j]
+          j++
+      } else {
+          j++
+      }
+      
+  }
+  return i+1 
+};
 
 
 const [brettNum, setBrettNum] = useState(0)
