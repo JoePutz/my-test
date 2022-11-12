@@ -354,6 +354,18 @@ var removeDuplicates = function(nums) {
   return i+1 
 };
 
+// Similar to above, this time just removing every value equal to val. Really should just use filter() silly question
+var removeElement = function(nums, val) {
+  let i = 0
+  for (j = 0; j < nums.length; j++) {
+      if ( nums[j] !== val) {
+          nums[i] = nums[j]
+          i++
+      } 
+  }
+  return i
+};
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
