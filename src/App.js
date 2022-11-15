@@ -99,6 +99,25 @@ function anagram(a, b) {
   }
 }
 
+
+//Interesting one, so you have to loop through the first letter of the first string, 
+var longestCommonPrefix = function(strs) {
+  let answer = ""
+  if(strs === null || strs.length === 0) return answer
+
+  for (let i=0; i < strs[0].length; i++){ 
+      const char = strs[0][i] // loop through all characters of the very first string. 
+
+      for (let j = 1; j < strs.length; j++){ 
+        // loop through all other strings in the array
+          if(strs[j][i] !== char) return answer
+      }
+      answer = answer + char
+  }
+
+  return prefix
+  }
+
 function toLatin (num) {
   let thousands = Math.floor(num / 1000)
   let hundreds = Math.floor((num % 1000) / 100)
@@ -365,6 +384,8 @@ var removeElement = function(nums, val) {
   }
   return i
 };
+
+
 
 
 const [brettNum, setBrettNum] = useState(0)
