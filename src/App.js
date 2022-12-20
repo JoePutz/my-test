@@ -7,6 +7,38 @@ function App() {
 
 //alright, gonna make this my leetcode practice 
 
+var twoSum = function(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+      for (let j = i + 1; j < nums.length; j++) {
+          if (nums[i] + nums[j] == target) {
+              return [i, j]
+          }
+      }
+  }
+};
+
+var twoSum = function(nums, target) {
+  const indices = new Map();
+
+  for (let index = 0; index < nums.length; index++) {
+      const complement = target - nums[index];
+
+      if (indices.has(complement)) {
+          return [indices.get(complement), index]
+      }
+
+      indices.set(nums[index], index)
+  }
+};
+// So this is the faster solution, here's how it works. 
+//1: creates an empty Map. 
+//2: Goes through the nums array. Check if the correct answer is in the empty Map.
+// 3: If it is not in the Map, it will add an entry into the Map that is the number, the index of that number
+// 4: It will cycle through all the enries in the array. Eventually it will find the solution among the answers in the Map. 
+// 5: It will then return the Map entry that is the solution, providing it's index number.
+// 6: Since all those on the Map are prior to the current index we're on, solution will be [Map[i], i]
+
+
 var checkIfPangram = function(x) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'
   let z = x.split("")
