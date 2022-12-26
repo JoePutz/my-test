@@ -419,6 +419,46 @@ var removeElement = function(nums, val) {
 };
 
 
+//Zigzag conversion, the point is to take a string and have it come out in a zigzag fasion
+var convert = function(s, numRows) {
+  if (numRows === 1 || s.length < numRows) {
+    return s;
+  }
+  let rows = [];
+  let currentRow = 0;
+  let reverse = false;
+  let result = "";
+
+  for (let i = 0; i < numRows; i++) {
+    rows[i] = [];
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    rows[currentRow].push(s[i]);
+    if (reverse === false) {
+      currentRow++;
+    } else {
+      currentRow--;
+    }
+
+    if (currentRow === numRows - 1 || currentRow === 0) {
+      reverse = !reverse;
+    }
+  }
+
+  rows.forEach((row) => {
+    result += row.join("");
+  });
+
+  return result;
+};
+//This one is neat, so you needed to figure out the points at which the direction of the zigzag switches.
+//When it reaches the end of the rows. But if we put them into an array it makes it easier to figure.
+//So first letter goes into array[0], second letter array[1], ect.
+//Reverse happens at currentRow is 0 or numRows-1. Make certain this happens after you push the letters obviously
+//When done combine all rows and return the result
+
+
 
 
 const [brettNum, setBrettNum] = useState(0)
