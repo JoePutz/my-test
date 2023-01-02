@@ -459,6 +459,41 @@ var convert = function(s, numRows) {
 //When done combine all rows and return the result
 
 
+var detectCapitalUse = function(word) {
+  let firstLetter = word[0]
+  let otherLetters = word.slice(1)
+  if (word.toUpperCase() === word) {
+      return true
+  }
+  else if (word.toLowerCase() === word ) {
+      return true
+  }
+  else if (firstLetter.toUpperCase() + otherLetters.toLowerCase() === word) {
+      return true
+  }
+  else {
+      return false
+  }
+};
+//This one is to find if capitalization is used correctly: All Caps, all lower case, only first letter caps
+//But there is another way to do it. 
+//compare the number of capital letters to length. If 0 then good. If equal to each other good. If 1 and it's the first letter good.
+var detectCapitalUse = function(word) {
+  const len = word.length;
+  if (len === 0) return false;
+  let cnt = 0;
+  let first = false;
+  for (let i = 0; i < len; ++ i) {
+      const ch = word.charAt(i);
+      if ((ch >= 'A') && (ch <= 'Z')) {
+          cnt ++;
+          if (i == 0) first = true;
+      }
+  }
+  return (cnt === 0) || ((cnt === 1) && first) || (cnt === len);
+};
+
+
 
 
 const [brettNum, setBrettNum] = useState(0)
