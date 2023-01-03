@@ -494,6 +494,32 @@ var detectCapitalUse = function(word) {
 };
 
 
+var minDeletionSize = function(strs) {
+
+  const strLen = strs[0].length
+  let count = 0
+  let i = 0
+  while(i < strLen){
+      for(let j = 0; j<strs.length-1; j++){
+          if(strs[j].charCodeAt(i) > strs[j+1].charCodeAt(i)){
+              count++
+              break
+          }
+      }
+      i++
+  }
+  return count
+};
+//This was a weird one. strs is an array of many strings all the same length. 
+//The goal was to see if equivalent letters in each string were in alphabetical order
+//If they were not, delete that "column" 
+//But don't actually delete it, just have a count of how many columns would need to be deleted
+//So how this one works, count is at 0. go through each equivalent position of the strings.
+//For each position check every string in the array. See if teh charCodeAt that position is 
+// alphabetical. If it is not. increase the count by 1 and BREAK (which stops the process) 
+// Go through all positions. Then return the count.
+
+
 
 
 const [brettNum, setBrettNum] = useState(0)
