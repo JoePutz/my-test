@@ -519,6 +519,34 @@ var minDeletionSize = function(strs) {
 // alphabetical. If it is not. increase the count by 1 and BREAK (which stops the process) 
 // Go through all positions. Then return the count.
 
+var minimumRounds = function(tasks) {
+  let totalCount = 0    
+  let count = {}
+  tasks.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+  let values = Object.values(count)
+  // console.log(Object.values(count)[0])
+  for (j = 0; j < values.length; j++) {
+      while (values[j] > 0) {
+          if (values[j] == 1) {
+              return -1
+          }
+          else if (values[j] % 3 == 0) {
+              totalCount += values[j] / 3
+          }
+          else {
+              totalCount += 1 + Math.trunc(values[j] / 3) 
+          }
+      }
+  }
+  return totalCount
+};
+//A weird one, where you have an array of numbers, and you can only remove the same number in groups of 2 or 3. How many times to remove them all? -1 means impossible.
+//Impossible is only true for 1. 
+//Create an Object of all values and number of them. 
+//Go through this object (or just the values for it) if there's a 1 just return -1 (the failure number)
+//Otherwise if it's divisible by 3 you're golden. That's the value. 
+//If it's not, then by math trickery it's actually the divisible by 3 number +1. As it will always be either %3 == 2 or 1. And in either case the total count is just plus 1.
+// Since you would either remove 1 from a group of three to make two groups of 2, or just add a group of 2.
 
 
 
