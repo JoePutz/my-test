@@ -549,6 +549,37 @@ var minimumRounds = function(tasks) {
 // Since you would either remove 1 from a group of three to make two groups of 2, or just add a group of 2.
 
 
+var maxIceCream = function(costs, coins) {
+  costs.sort((num1, num2) => num1 - num2)
+
+  let icecream = 0;
+  
+  while (icecream < costs.length && costs[icecream] <= coins) {
+      coins -= costs[icecream];
+      icecream += 1;
+  }
+
+  return icecream;
+};
+//     let orderCosts = costs.sort()
+//     let total = 0
+//     for (i = 0; i < costs.length; i++) {
+//         if (coins - orderCosts[i] >= 0) {
+//             total++
+//             coins = coins - orderCosts[i]
+//         } else {
+//             break
+//         }
+//     }
+//     return total
+// };
+
+//how many different icecream products can you buy? Given an array of costs of ice cream and how much money you have.
+//Easy idea. Sort array in order of cost. Go 1 by 1 add to total bought and subtract from coins.
+//neat trick in solution to use total icecream as essentially i. I like that. Not certain why my initial program did not work. 
+//So why did my method not work initially? I misunderstood .sort() It doesn't do order numerically. It goes off numbers so [1,3,100,10,2,5,500] would be [1,10,100,2,3,5,500]
+//What I need to do is be more accurate with .sort() .sort((num1, num2) => num1 - num2) apparently does the correct order
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
