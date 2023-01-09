@@ -580,6 +580,32 @@ var maxIceCream = function(costs, coins) {
 //So why did my method not work initially? I misunderstood .sort() It doesn't do order numerically. It goes off numbers so [1,3,100,10,2,5,500] would be [1,10,100,2,3,5,500]
 //What I need to do is be more accurate with .sort() .sort((num1, num2) => num1 - num2) apparently does the correct order
 
+var preorderTraversal = function(root) {
+  if (!root) {
+      return []
+  }
+  else {
+      const stack = [root]
+      const result = []
+      
+      while (stack.length) {
+          let node = stack.pop()
+          console.log(node.val)
+          result.push(node.val)
+          if (node.right) {
+              stack.push(node.right)
+          }
+          else if (node.left) {
+              stack.push(node.left)
+          }
+      }
+      return result
+  }
+  
+};
+
+//So this is supposed to be considered a pretty trivial thing, with reading and ordering binary trees. I'm still not certain how those work. Will need to read up on.
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
