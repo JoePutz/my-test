@@ -603,9 +603,27 @@ var preorderTraversal = function(root) {
   }
   
 };
-
 //So this is supposed to be considered a pretty trivial thing, with reading and ordering binary trees. I'm still not certain how those work. Will need to read up on.
 
+var addTwoNumbers = function(l1, l2) {
+  console.log(l1.length)
+  let sum = 0
+  output = []
+  for (i = 0; i < l1.length; i++) {
+      sum = sum + (l1[i] * 10 ** i)
+  }
+  for (j = 0; j < l2.length; j++) {
+      sum = sum + (l2[j] * 10 ** j)
+  }
+  sumString = sum.toString()
+  for(x = 0; x < sumString.length; x++) {
+      output.unshift(sumString.charAt([x]))
+  }
+  return output
+}
+//This should work if it is 2 arrays. Anyway, this is supposed to take two arrays of numbers. Where each element is a 10s place away (so first element is the ones, second is the tens)
+//Add these two numbers together and then spit out a new array w/ the answer. 
+//But apparently this is supposed to be w/ lists that are not arrays in the question? I don't really get it.
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
