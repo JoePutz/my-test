@@ -625,6 +625,23 @@ var addTwoNumbers = function(l1, l2) {
 //Add these two numbers together and then spit out a new array w/ the answer. 
 //But apparently this is supposed to be w/ lists that are not arrays in the question? I don't really get it.
 
+var findMedianSortedArrays = function(nums1, nums2) {
+  arrayMid = (nums1.length + nums2.length - 1) / 2
+  newArray = nums1.concat(nums2).sort((a, b) => a - b)
+  if (parseInt(arrayMid) == arrayLength) {
+      return newArray[arrayMid]
+  } else {
+      answer = (newArray[arrayMid - .5] + newArray[arrayMid + .5]) / 2
+      return answer
+  }
+
+};
+//simple one. Which is strange considering this was listed as "hard" w/ only a 35% success rate. Beat it easy. 
+//Anyway, two arrays of numbers. Find the median of both arrays together.
+//Combine both arrays, then sort them. Find the length of the new array and the middle. 
+//if the middle is an integer congrats that's the median of the new array
+//if it's not, then it's the average of the two closest numbers.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
