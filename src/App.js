@@ -642,6 +642,34 @@ var findMedianSortedArrays = function(nums1, nums2) {
 //if the middle is an integer congrats that's the median of the new array
 //if it's not, then it's the average of the two closest numbers.
 
+
+var lengthOfLongestSubstring = function(s) {
+  let longestStringLength = 0;
+
+  for (let i = 0; i < s.length; i++) {
+      let currentStringSet = new Set();
+      for (let x = i; x < s.length; x++) {
+          if (currentStringSet.has(s[x])) {
+              break;
+          } else {
+              currentStringSet.add(s[x]);
+          }
+      }
+
+      longestStringLength = Math.max(
+          longestStringLength,
+          currentStringSet.size
+      );
+  }
+
+  return longestStringLength;
+};
+// so this one I needed to use sets. which have some interesting properties to use. 
+//Goal was to take a string, and find the longest substring with all unique letters.
+//Step 1: create an empty Set. For each element, check if it is already in the set. If no? Add to set. If yes? Break
+//check if the length of the set is bigger than the longest string length, pick the biggest to be the new longeststringlength
+//Go thru all positions on the string. Return the current (and therefore actual) longestStringLength
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
