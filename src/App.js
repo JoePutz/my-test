@@ -709,6 +709,30 @@ var longestPalindrome = function (string) {
   return longestPal;
 };
 
+var reverse = function(x) {
+  let negative = false
+  let result = 0
+  if (x < 0) {
+      negative = true
+      x = x * -1
+  }
+  while (x > 0) {
+      result = result * 10 + x % 10
+      x = Math.trunc(x / 10)
+  }
+  if (result > 2**31 -1) {
+      return 0
+  }
+  if (negative === true) {
+      result = result * -1
+  }
+  return result
+
+};
+//reverse an integer, make certain that it was not too big or too small. Pretty easy.
+//Some things to check: If it's negative, set that aside to re-add later
+//make certain to return 0 if end result would be ouside the listed number range
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
