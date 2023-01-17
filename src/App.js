@@ -733,6 +733,41 @@ var reverse = function(x) {
 //Some things to check: If it's negative, set that aside to re-add later
 //make certain to return 0 if end result would be ouside the listed number range
 
+var myAtoi = function(s) {
+  var i = 0;
+  var sign = 1;
+  var res = 0;
+  var INT_MAX = 2147483647;
+  var INT_MIN = - INT_MAX - 1;
+
+  while (s[i] === ' ') i++;
+
+  if (s[i] === '+' || s[i] === '-') {
+    sign = s[i] === '+' ? 1 : -1;
+    i++;
+  }
+
+  while (s[i] >= '0' && s[i] <= '9') {
+    res = (res * 10) + (s[i] - 0);
+    if (sign === 1 && res > INT_MAX) return INT_MAX;
+    if (sign === -1 && res > INT_MAX + 1) return INT_MIN;
+    i++;
+  }
+
+  return res * sign;
+}
+//So this is a test case for the while loop. I was trying to use for loops and then I had to plan out how all of the failcases were
+//Really it is just while something is true, otherwise stop. Which is what while is good for
+//Basically I had a string and I needed to turn it into a number.
+//All the " " in the beginning of the string could be ignored. 
+//Once those were done if there was a + or a - that is needed to determine the number
+//Then it has to be numbers.
+//So while " " go ahead. Once there are no more " " check if its a positive or a negative
+//Once that is done, while it's a number add to the number. If it's not a number that's it you're done
+
+
+
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
