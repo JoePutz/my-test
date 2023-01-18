@@ -766,7 +766,47 @@ var myAtoi = function(s) {
 //Once that is done, while it's a number add to the number. If it's not a number that's it you're done
 
 
+var romanToInt = function(s) {
+  let result = 0
+  const map = {
+      I: 1,
+      V: 5,
+      X: 10,
+      L: 50,
+      C: 100,
+      D: 500,
+      M: 1000
+  }
+  for (i = 0; i < s.length; i++) {
+      if (s[i] === 'I' && s[i+1] === 'V') {
+          result += 4
+          i++
+      }
+      else if (s[i] === 'I' && s[i+1] === 'X') {
+          result += 9
+          i++
+      } else if (s[i] === 'X' && s[i+1] === 'L') {
+          result += 40
+          i++
+      } else if (s[i] === 'X' && s[i+1] === 'C') {
+          result += 90
+          i++
+      } else if (s[i] === 'C' && s[i+1] === 'D') {
+          result += 400
+          i++
+      } else if (s[i] === 'C' && s[i+1] === 'M') {
+          result += 900
+          i++
+      } else {
+          result += map[s[i]]
+      }
+  }
+  return result
+};
 
+//Turning a Roman numeral into an integer, opposite of an earlier problem
+//Create a map to go through. but because it's not brilliant, it's easiest to go through the results that can't be just one thing
+//Idea: Can I create a more complex map with the IV and IX stuff, then do a single if/else if of whether map[s[i]] < map[s[i+1]] if true then result += map[s[i]+s[i+1]]
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
