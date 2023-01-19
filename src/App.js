@@ -808,6 +808,36 @@ var romanToInt = function(s) {
 //Create a map to go through. but because it's not brilliant, it's easiest to go through the results that can't be just one thing
 //Idea: Can I create a more complex map with the IV and IX stuff, then do a single if/else if of whether map[s[i]] < map[s[i+1]] if true then result += map[s[i]+s[i+1]]
 
+
+var threeSum = function(nums) {
+  nums.sort((a, b) => a-b)
+  let results = []
+
+  for (i=0; i < nums.length -2; i++) {
+      if (nums[i] != nums[i-1]) {
+          let left = i+1
+          let right = nums.length-1
+          while (left < right) {
+              if(nums[i] + nums[left] + nums[right] === 0) {
+                  results.push([nums[i], nums[left], nums[right]])
+                  while(nums[left] === nums[left+1]) left++
+                  while(nums[right] === nums[right-1]) right--
+                  left++
+                  right--
+              }
+              else if (nums[i] + nums[left] + nums[right] < 0) left++
+              else if (nums[i] + nums[left] + nums[right] > 0) right--
+          }
+      }
+      
+  }
+  return results
+};
+//NOt a hard one. The difficult thing was to think of the method of iterating through both sides imultaneously
+//Rules: array of nums, get an array of arrays of 3 numbers that add up to 0, can only use each number in nums once. no repeat arrays
+//The real fun bit is if(nums[i] != nums[i-1]) {...} because it removes repeats. With only 3 numbers the second and third need to cancel each other out, so will always be the same
+//So checking if nums[i] isn't the same as the number before it makes sure no repeats.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
