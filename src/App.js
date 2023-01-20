@@ -838,6 +838,63 @@ var threeSum = function(nums) {
 //The real fun bit is if(nums[i] != nums[i-1]) {...} because it removes repeats. With only 3 numbers the second and third need to cancel each other out, so will always be the same
 //So checking if nums[i] isn't the same as the number before it makes sure no repeats.
 
+var threeSumClosest = function(nums, target) {
+  let len = nums.length;
+  let res = nums[0] + nums[1] + nums[2];
+  let sum = 0;
+  // var l = 0;
+  // var r = 0;
+  nums.sort((a, b) => (a - b));
+  for (var i = 0; i < len - 2; i++) {
+      if (i > 0 && nums[i] === nums[i - 1]) continue;
+      let left = i + 1;
+      let right = len - 1;
+      while (left < right) {
+          sum = nums[i] + nums[left] + nums[right];
+          if (sum < target) {
+              left++;
+          } else if (sum > target) {
+              right--;
+          } else {
+              return sum;
+          }
+          if (Math.abs(sum - target) < Math.abs(res - target)) res = sum;
+      }
+  }
+  return res;
+  // nums.sort((a, b) => a-b)
+  // let result = nums[0] + nums[1] + nums[2]
+  // if (nums.length === 3) {
+  //     return result
+  // }
+  // for (i=0; i < nums.length -2; i++) {
+  //     let left = i+1
+  //     let right = nums.length -1
+  //     while (left < right) {
+  //         if (nums[i] + nums[left] + nums[right] === target) {
+  //             return target
+  //         }
+  //         else if (Math.abs(nums[i] + nums[left] + nums[right] - target) < Math.abs(result - target)) {
+  //             result = nums[i] +  nums[left] + nums[right]
+  //             while (nums[left] === nums[left+1]) left++
+  //             while (nums[right] === nums[right-1]) right --
+  //             left++
+  //             right--
+  //         }
+  //         else if (nums[i] + nums[left] + nums[right] - target < 0) left++
+  //         else if (nums[i] + nums[left] + nums[right] - target > 0) right++
+  //     }
+  // }
+  // return result
+};
+
+//An expansion of the last one. This we needed to find the three numbers when added together closes to target
+//Good use of absolute value in there. 
+//My initial thoughts were so close, just too slow. Apparently checking to not repeat same numbers is less important than going thru it all faster
+//Also the nice if less increase left, if greater increase right, otherwise it's equal so you're good.
+//That's something I need to improve, figuring out how to make the code easier thru ommission
+
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
