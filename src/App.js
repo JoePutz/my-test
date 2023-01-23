@@ -894,6 +894,46 @@ var threeSumClosest = function(nums, target) {
 //Also the nice if less increase left, if greater increase right, otherwise it's equal so you're good.
 //That's something I need to improve, figuring out how to make the code easier thru ommission
 
+var letterCombinations = function(digits) {
+  output = []
+  const digitsToLetters = {
+      2: ["a", "b", "c"],
+      3: ["d", "e", "f"],
+      4: ["g", "h", "i"],
+      5: ["j", "k", "l"],
+      6: ["m", "n", "o"],
+      7: ["p", "q", "r", "s"],
+      8: ["t", "u", "v"],
+      9: ["w", "x", "y", "z"]
+  }
+if (digits === '') {
+  return [];
+}
+
+var possibleValues = digits.split('').map(value => digitsToLetters[value]);
+console.log(possibleValues)
+var possibleCombinations = [];
+
+var recursiveCombine = (start, result) => {
+
+  if (result.length === digits.length) {
+    possibleCombinations.push(result.join(''));
+  }
+
+  for (var i = start; i < possibleValues.length; i++) {
+    for (var j = 0; j < possibleValues[i].length; j++) {
+      result.push(possibleValues[i][j]);
+      recursiveCombine(i + 1, result);
+      result.pop();
+    } 
+  }
+}
+
+recursiveCombine(0, []);
+return possibleCombinations;
+
+};
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
