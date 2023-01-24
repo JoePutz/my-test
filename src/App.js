@@ -934,6 +934,48 @@ return possibleCombinations;
 
 };
 
+var fourSum = function(nums, target) {
+  if (nums.length < 4) return [];
+  nums.sort((a, b) => a-b)
+  let length = nums.length
+  let results = []
+
+  for (i = 0; i < length -3; i++) {
+      if (i > 0 && nums[i] === nums[i - 1]) continue;
+      if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target) break;
+      if (nums[i] + nums[length - 1] + nums[length - 2] + nums[length - 3] < target) continue;
+      for (j = i + 1; j < length -2; j++) {
+          if (j > i + 1 && nums[j] === nums[j - 1]) continue;
+          if (nums[i] + nums[j] + nums[j + 1] + nums[j + 2] > target) break;
+          if (nums[i] + nums[j] + nums[length - 1] + nums[length - 2] < target) continue;
+          let left = j + 1
+          let right = length-1
+          while (left < right) {
+              let sum = nums[i] +  nums[j] + nums[left] + nums[right]
+              if (sum === target) {
+                  results.push([nums[i], nums[j], nums[left], nums[right]])
+                  while (nums[left] === nums[left+1]) left++
+                  while (nums[right] === nums[right-1]) right--
+                  left++
+                  right--
+              }
+              else if (sum < 0) left++
+              else if (sum > 0) right --
+          }
+      }
+  }
+  return results
+};
+//4 sum is a lot like 3sum. But you have to do go through i and j before you get to left and right going in.
+//the rest of the lines are all about making things go faster and breaking when we know it won't work. 
+//in order
+//if nums[i] = nums[i+1] it's gonna be the same result. Skip
+//if first 4 numbers are already larger than the target nothing will work
+//if i and the last 3 numbers are still too small i will never work, so go to i+1
+//if nums[j] = nums[j+1] it's the same result go to j+2
+//if i and j + the next two numbers are already bigger than the target, it will never equal the target. break
+//if i and j + the last two numbers are still smaller than the target, it will enver equal the target. go to j+1
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
