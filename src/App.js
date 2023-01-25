@@ -977,6 +977,40 @@ var fourSum = function(nums, target) {
 //if i and j + the last two numbers are still smaller than the target, it will enver equal the target. go to j+1
 
 
+var isValid = function(s) {
+  if (s.length % 2 !== 0) {
+      return false
+  }
+
+  const Map = {
+      '{': '}', 
+      '(': ')',
+      '[': ']'
+  }
+  const stack = []
+
+  for (i = 0; i < s.length; i++ ) {
+      if (Map[s[i]]) {
+          stack.push(Map[s[i]])
+      }
+      else if (stack.length > 0 && stack[stack.length -1] === s[i]) {
+          stack.pop()
+      }
+      else {
+          return false
+      }
+  }
+  return stack.length === 0
+}
+//Today I learned about a new thing called stack. Which is kinda an array. 
+//So the question was, to determine if a string of []{}() is valid. With every opening having a corresponding close in the correct order
+//Easy bit out of the way, if it's an odd length string then it can't be correct
+//so Map and stack. Map I know. A pair of values I can look into.
+//if(Map[s[i]]) exists (meaning the s[i] is one of the initial values in the Map) then push the corresponding answer to the stack.
+//if the last value in the stack (remember all of these are closing values) equals where we're at in the s[i] then a group is closed. Remove from the stack and try to close the next one
+//if s[i] is an ending }]) but does not match the last value in the stack, then it's false.
+//At the end, check if the stack is empty. If True? True. If false? false
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
