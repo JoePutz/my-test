@@ -1009,7 +1009,35 @@ var isValid = function(s) {
 //if(Map[s[i]]) exists (meaning the s[i] is one of the initial values in the Map) then push the corresponding answer to the stack.
 //if the last value in the stack (remember all of these are closing values) equals where we're at in the s[i] then a group is closed. Remove from the stack and try to close the next one
 //if s[i] is an ending }]) but does not match the last value in the stack, then it's false.
-//At the end, check if the stack is empty. If True? True. If false? false
+//At the end, check if the stack is empty. If True? True
+
+var generateParenthesis = function (n) {
+  // Resultant list
+  const result = [];
+  // Recursively generate parentheses
+  generate(result, "", 0, 0, n);
+  return result;
+};
+
+function generate(result, s, open, close, n) {
+  // Base condition
+  if (open === n && close === n) {
+      result.push(s);
+      return;
+  }
+  // If the number of _open parentheses is less than the given n
+  if (open < n) {
+      generate(result, s + "(", open + 1, close, n);
+  }
+  // If we need more close parentheses to balance
+  if (close < open) {
+      generate(result, s + ")", open, close + 1, n);
+  }
+};
+
+//This is an interesting one, multiple if statements run regardless if the above statement was true. So i'm not using else if. Therefore this will generate both the ( and ) variations at each step.
+
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
