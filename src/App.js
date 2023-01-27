@@ -1037,7 +1037,27 @@ function generate(result, s, open, close, n) {
 
 //This is an interesting one, multiple if statements run regardless if the above statement was true. So i'm not using else if. Therefore this will generate both the ( and ) variations at each step.
 
+var strStr = function(haystack, needle) {
+  let index = [-1]
+  for (i = 0; i < haystack.length; i++) {
+      for (j = 0; j < needle.length; j++) {
+          if (haystack[i+j] !== needle[j]) {
+              break
+          }
+          else if (j === needle.length -1 && haystack[i+j] === needle[j]) {
+              index.push(i)
 
+          }
+      } 
+  }
+  if (index.length === 1) return -1
+  else return index[1]
+};
+//The way overcomplicated way of finding the index of a second string in a larger string
+var strStr = function(haystack, needle) {
+  return haystack.indexOf(needle)  
+};
+//This does the exact same thing
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
