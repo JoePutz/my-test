@@ -1179,6 +1179,10 @@ var nextPermutation = function(nums) {
   nums.sort((a, b) => a - b);
 };
 
+var search = function(nums, target) {
+  return nums.indexOf(target)
+};
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
