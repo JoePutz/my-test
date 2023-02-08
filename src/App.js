@@ -1202,6 +1202,35 @@ var searchRange = function(nums, target) {
 //So, indexOf to find the first. 
 //Work backwards to find the last.
 
+var searchInsert = function(nums, target) {
+  if (nums.indexOf(target) !== -1) {
+      return nums.indexOf(target)
+  }
+  else {
+      for (i = 0; i < nums.length; i++) {
+          if (nums[i] > target) {
+              return i
+          }
+      }
+      return nums.length
+  }
+};
+
+//Simple find the index of the target value, if it doesn't exist where would it be in an ordered array
+//So, find the index, return if exists, if not, figure out where it would be. 
+//Amusingly there's an even easier method.
+
+var searchInsert = function (nums, target) {
+  if (nums.includes(target)) {
+      return nums.indexOf(target)
+  } else {
+      nums.push(target)
+      nums.sort((a, b) => a - b)
+      return nums.indexOf(target)
+  }
+};
+//Same as above, just super simple. If it exists, put the index. If it doesn't, add it to the array, sort, and then return it.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
