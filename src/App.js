@@ -1183,6 +1183,25 @@ var search = function(nums, target) {
   return nums.indexOf(target)
 };
 
+var searchRange = function(nums, target) {
+  answer = []
+  let i = nums.indexOf(target)
+  answer.push(i)
+  if (i === -1) {
+      return [-1, -1]
+  }
+  for (j = nums.length -1; j >= i; j--) {
+      if (nums[j] === target) {
+          answer.push(j)
+          break
+      }
+  }
+  return answer
+};
+//Easy one, again. find the first and last positions that a target is in an array of numbers
+//So, indexOf to find the first. 
+//Work backwards to find the last.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
