@@ -1231,6 +1231,75 @@ var searchInsert = function (nums, target) {
 };
 //Same as above, just super simple. If it exists, put the index. If it doesn't, add it to the array, sort, and then return it.
 
+var isValidSudoku = function(board) {
+  for (let i = 0; i < 9; i++) {
+       for (let j = 0; j < 9; j++) {
+           const value = board[i][j];
+           if (value !== '.') {
+               if (!validRow(board, i, j, value) || !validColumn(board, i, j, value) | !validBox(board, i, j, value)) {
+                   return false;
+               }
+           }
+       }
+   }
+   return true;
+};
+
+//The row function.
+function validRow(board, row, col, value) {
+   // j represents on column
+   for (let j = 0; j < 8; j++) {
+       // check if the current column matches the passed in column
+       if (j !== col) {
+           if (board[row][j] === value) {
+               return false; 
+           }
+       }
+   }
+   
+   return true;
+}
+
+// The column function.
+function validColumn(board, row, col, value) {
+    // j represents on row
+   for (let i = 0; i < 8; i++) {
+       // check if the current row matches the passed in row
+       if (i !== row) {
+           if (board[i][col] === value) {
+               return false; 
+           }
+       }
+   }
+   
+   return true;
+}
+
+//The sub-boxes function.
+function validBox(board, row, col, value) {
+   const startRow = row - (row % 3), startCol = col - (col % 3);
+   
+   for (let i = startRow; i < startRow + 3; i++) {
+       for (let j = startCol; j < startCol + 3; j++) {
+           if (i !== row && j !== col) {
+               if (board[i][j] === value) {
+                   return false;
+               }
+           }
+       }
+   }
+   
+   return true;
+};
+
+//So this is a complicated one. Basically I had to determine if the allotment of numbers could theoretically make a valid sudoku
+//So I had to determine if there was a repeat in the rows, columns, or squares. 
+//First part is simple. Check if each individual spot (that wasn't an "." as that's blank) worked for row, column, square
+//Then make separate functions for each of row, column, square.
+//For row, cycle thru each number. check if it's the target. If not. good. 
+//Same for column.
+//Square got to get the squares right, then it's basically the same thing. 
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
