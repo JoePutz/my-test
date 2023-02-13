@@ -1300,6 +1300,44 @@ function validBox(board, row, col, value) {
 //Same for column.
 //Square got to get the squares right, then it's basically the same thing. 
 
+var countAndSay = function(n) {
+  var str = '1';
+  var tmp = '';
+  var last = '';
+  var count = 0;
+  var len = 0;
+
+  for (var i = 1; i < n; i++) {
+      tmp = '';
+      last = '';
+      count = 0;
+      len = str.length;
+
+      for (var j = 0; j < len; j++) {
+          if (last === '') {
+              last = str[j];
+              count = 1;
+              continue;
+          }
+          if (str[j] === last) {
+              count += 1;
+          } else {
+              tmp += '' + count + last;
+              last = str[j];
+              count = 1;
+          }
+      }
+
+      if (last) {
+      tmp += '' + count + last;
+      }
+
+      str = tmp;
+  }
+
+  return str;
+};
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
