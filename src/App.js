@@ -1377,6 +1377,28 @@ var solveSudoku = function(board) {
   return board;
 };
 
+
+var combinationSum = function(candidates, target) {
+  let answer = []
+  sortedCandidates = candidates.sort((a, b) => a-b)
+
+  function permute(tempList, remaining, start) {
+      for (let i = start; i < sortedCandidates.length && sortedCandidates[i] <= remaining; i++) {
+          if (sortedCandidates[i] === remaining) {
+              answer.push([...tempList, sortedCandidates[i]]);
+          } else {
+              permute([...tempList, sortedCandidates[i]], remaining - sortedCandidates[i], i);
+          }
+      }
+  }
+
+  permute([], target, 0);
+  return answer;
+};
+
+//This is permutation stuff. it's where you loop through the same function. But you need to have an off value obviously. 
+
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
