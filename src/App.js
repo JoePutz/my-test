@@ -1398,6 +1398,25 @@ var combinationSum = function(candidates, target) {
 
 //This is permutation stuff. it's where you loop through the same function. But you need to have an off value obviously. 
 
+var firstMissingPositive = function(nums) {
+  nums.sort((a, b) => a - b)
+  let j = 1
+  for (i = 0; i < nums.length; i++) {
+      // if (nums[i] < j) break
+      if (nums[i] === j ) {
+          j++
+      }
+      if (nums[i] > j) return j
+
+  }
+  return j
+};
+//Another hard that was actually easy. Find the smallest missing postive # in an array of numbers
+//Order the list
+//Make j our smallest possible positive number (1)
+//Go thru ordered list and check if they have a match for j. If they do, increase j.
+//If missing a j, that's the answer. 
+//If array ends, then it can't have the last j. Still our answer.
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
