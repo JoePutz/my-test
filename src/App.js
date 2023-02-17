@@ -1418,6 +1418,34 @@ var firstMissingPositive = function(nums) {
 //If missing a j, that's the answer. 
 //If array ends, then it can't have the last j. Still our answer.
 
+var multiply = function(num1, num2) {
+  //max length of a multiple is both lengths added together. So create an array of 0s of that length
+  let answer = Array(num1.length + num2.length).fill(0)
+
+  for (i=num1.length -1; i>= 0; i--) {
+      for (j=num2.length-1; j >= 0; j--) {
+          let product = num1[i] * num2[j]
+          let index = num1.length + num2.length - 1 - (num1.length -1 -i + num2.length -1 -j )
+          answer[index] += product
+          if (answer[index] > 9) {
+              answer[index-1] += Math.floor(answer[index]/10)
+              answer[index] %= 10
+          }
+      }
+  }
+  //skip leading 0s
+  while (answer[0] === 0) {
+      answer.shift()
+  }
+
+  if (answer.length === 0) {
+      return "0"
+  }
+
+  return answer.join("")
+
+};
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
