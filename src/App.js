@@ -1446,6 +1446,27 @@ var multiply = function(num1, num2) {
 
 };
 
+
+var jump = function(nums) {
+  var len = nums.length;
+  var step = 0;
+  var now = 0;
+  var max = 0;
+
+  for (var i = 0; i < len - 1; i++) {
+    max = Math.max(max, i + nums[i]);
+    if (i === now) {
+      step++;
+      now = max;
+    }
+  }
+
+  return step;
+};
+//neat one about jumping positions based on the number in an array. Jump the fewest times to reach the end.
+//max = Math.max(max, i+nums[i]) keeps track of the furthest jump you can have based on your position
+//if you reach or surpass that point, increase the jump marker and do it again.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
