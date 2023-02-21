@@ -1467,6 +1467,22 @@ var jump = function(nums) {
 //max = Math.max(max, i+nums[i]) keeps track of the furthest jump you can have based on your position
 //if you reach or surpass that point, increase the jump marker and do it again.
 
+var permute = function(nums) {
+  let sol = [];
+  if(nums.length <= 1) {
+      return [nums];
+  } 
+  for(let i = 0; i < nums.length; i++) {
+      let numsCopy = [...nums]; 
+      numsCopy.splice(i, 1); 
+      let rtnVal = permute(numsCopy);
+      for(let j = 0; j < rtnVal.length; j++) {
+          sol.push([nums[i], ...rtnVal[j]])
+      }  
+  }
+  return sol;
+};
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
