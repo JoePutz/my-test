@@ -1483,6 +1483,11 @@ var permute = function(nums) {
   return sol;
 };
 
+var myPow = function(x, n) {
+  return x**n
+};
+// Bit of a simple one today. Ridiculosly simple. But I'm counting it because I'm busy.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
