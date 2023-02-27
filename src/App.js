@@ -1488,6 +1488,49 @@ var myPow = function(x, n) {
 };
 // Bit of a simple one today. Ridiculosly simple. But I'm counting it because I'm busy.
 
+var maxSubArray = function(nums) {
+  let maxSum = -Infinity
+  let currentSum = 0
+  // iterate through the nums, store sub-problems result
+  for(let i = 0; i < nums.length; i++){ 
+      //cumulating answers to the top
+      
+      //compare currentSum add current number 
+      //with current number and store the maximum value
+      currentSum = Math.max(nums[i], currentSum + nums[i])
+      
+      //compare maxSum with currentSum and store the greater value
+      maxSum = Math.max(currentSum, maxSum)
+      
+  }
+  return maxSum
+  // if (nums.length === 1) {
+  //     return nums[0]
+  // }
+  // let maxSum = nums[0]
+  // beginning = 0
+  // end = 0
+  // for (i = 0; i < nums.length; i++) {
+  //     if (nums[i] > maxSum) {
+  //         maxSum = nums[i]
+  //     }
+  //     for (j = i+1; j < nums.length; j++) {
+  //         let shortSum = nums.slice(i, j+1).reduce((a,b) => a+b)
+  //         if (shortSum > maxSum) {
+  //             beginning = i
+  //             end = j
+  //             maxSum = shortSum
+  //         }
+  //     }
+  // }
+  // // if (nums[nums.length-1] > maxSum) {
+  // //     console.log(nums[nums.length-1])
+  // //     return nums[nums.length-1]
+  // // }
+  // return maxSum
+};
+
+//So interesting one, almost had it alone. Never heard of this version before. Pretty neat
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
