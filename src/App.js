@@ -1531,6 +1531,69 @@ var maxSubArray = function(nums) {
 };
 
 //So interesting one, almost had it alone. Never heard of this version before. Pretty neat
+
+var spiralOrder = function(matrix) {
+  let answer = []
+  let horizontal = true
+  let backfront = true
+  let right = true
+  while (matrix[0]) {
+      if (horizontal === true && backfront === true) {
+          answer.push(...matrix[0])
+          matrix.shift()
+          horizontal = false
+          backfront = false
+          console.log(matrix)
+      }
+      if (horizontal === false && right === true) {
+          for (i = 0; i < matrix.length; i++) {
+              let end = matrix[i].length -1
+              answer.push(matrix[i][end])
+              matrix[i].pop()
+              if (matrix[i].length === 0) {
+                  matrix.splice(i, 1)
+                  i--
+              }
+          }
+          horizontal = true
+          right = false
+          console.log(matrix)
+      }
+      if (horizontal === true && backfront === false) {
+          let oldArray = matrix[matrix.length-1]
+          if (oldArray) {
+              for (z = oldArray.length -1; z >= 0; z--) {
+                  answer.push(oldArray[z])
+              }
+          }
+          matrix.pop()
+          horizontal = false
+          backfront = true
+          console.log(matrix)
+      }
+      if (horizontal === false && right === false) {
+          for (j= matrix.length -1; j >= 0; j--) {
+              answer.push(matrix[j][0])
+              matrix[j].shift()
+              if (matrix[j].length === 0) {
+                  matrix.splice(j, 1)
+              }
+          }
+          horizontal = true
+          right = true
+          console.log(matrix)
+      }
+  }
+  
+  return answer
+};
+
+//Possibly the hardest one I've done w/o assistance
+//Go thru a spiral an array of array of numbers, return a straigh array of all the numbers as if they were counted on a spiral
+//So top row, then all the rightmost, then the bottom backwards, then up the leftmost
+
+
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
