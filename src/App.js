@@ -1592,7 +1592,56 @@ var spiralOrder = function(matrix) {
 //Go thru a spiral an array of array of numbers, return a straigh array of all the numbers as if they were counted on a spiral
 //So top row, then all the rightmost, then the bottom backwards, then up the leftmost
 
+var spiralOrder = function (matrix) {
+  let result = [];
 
+  let i = 0;
+  let j = 0;
+
+  let hor = true;
+  let forw = true;
+
+  let turnI = 0;
+  let turnJ = matrix[i].length - 1;
+  let count = 0;
+
+  let limitI = matrix.length - 1;
+  let limitJ = matrix[i].length - 1;
+
+  let flatLength = matrix.flat().length;
+  while (flatLength > 0) {
+    // bad solution for a bad edge case
+    if (j > matrix[i].length - 1) {
+        j--
+        i++
+    }
+    result.push(matrix[i][j]);
+
+    if (hor && forw) j++;
+    else if (hor && !forw) j--;
+    else if (!hor && forw) i++;
+    else if (!hor && !forw) i--;
+
+    if (i == turnI && j == turnJ) {
+      // recalc turn point
+      if (hor && forw) turnI = limitI - count;
+      else if (!hor && forw) {
+        turnJ = 0 + count;
+        count++;
+      } else if (hor && !forw) turnI = 0 + count;
+      else if (!hor && !forw) turnJ = limitJ - count;
+
+      // recalc direction
+      if (!hor) forw = !forw;
+      hor = !hor;
+    }
+
+    flatLength--;
+  }
+
+  return result;
+}
+//This is the fastest answer, and it's kinda beautiful. Instead just going thru every single number individually
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
