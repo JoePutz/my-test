@@ -1643,6 +1643,27 @@ var spiralOrder = function (matrix) {
 }
 //This is the fastest answer, and it's kinda beautiful. Instead just going thru every single number individually
 
+var canJump = function(nums) {
+  if (!nums.includes(0)) {
+      return true
+  }
+  let end = nums.length
+  let max = 0
+
+  for (i = 0; i < end; i++) {
+      if (i > max) {
+          return false
+      }
+      max = Math.max(nums[i] + i, max)
+  }
+
+  return true
+};
+
+//So, if all numbers are positive = true
+//if there is a 0, then the maximum value + the position of that value has to be greater than the index of that 0. 
+//
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
