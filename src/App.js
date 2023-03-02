@@ -1664,6 +1664,48 @@ var canJump = function(nums) {
 //if there is a 0, then the maximum value + the position of that value has to be greater than the index of that 0. 
 //
 
+var merge = function(intervals) {
+  intervals.sort((a,b) => a[0] - b[0])
+  answer = []
+  for (i = 0; i < intervals.length; i++) {
+      let start = intervals[i][0]
+      let max = intervals[i][1]
+      let j = i + 1
+      for (j; j < intervals.length; j++) {
+          if (start <= intervals[j][0] && intervals[j][0] <= max) {
+              max = Math.max(max, intervals[j][1])
+          }
+          else {
+              break
+          }
+      }
+      answer.push([start, max])
+      i = j-1
+
+  }
+  return answer
+};
+//My solution to merging intervals. You have an array of two point arrays. 
+//The goal is to combine overlapping intervals.
+//First make them in order.
+//you have your first interval, compare to the later ones, and if the second point is w/in the first you make the max the higher of the 2 points
+//if you get a point out of the new range, break. Push the answer into the solution, and make certain to skip all the now combined points
+
+var merge = function(I) {
+  let arr = [], i=0
+  I.sort((a,b) => a[0]-b[0])
+  while(i<I.length){
+      let low=I[i][0], high=I[i][1]
+      while(i+1<I.length && high>=I[i+1][0]) high=Math.max(high,I[++i][1])
+      arr.push([low,high])
+      i++
+  }
+  return arr
+};
+//My solution was slow. This is an elegant, fast solution. 
+//Sort
+//Basically what I did but w/ a while loop. 
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
