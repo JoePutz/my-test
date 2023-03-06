@@ -1706,6 +1706,34 @@ var merge = function(I) {
 //Sort
 //Basically what I did but w/ a while loop. 
 
+var fib = function(n) {
+  let fibi = [0, 1, 1]
+  if (n > 2) {
+      for (i = 2; i <= n; i++) {
+          if (fibi.length -1 < i) {
+              fibi.push(fibi[i-1] + fibi[i-2])
+          }
+      }
+  }
+  return fibi[n]
+};
+
+var distributeCandies = function(candyType) {
+  candyType.sort((a, b) => a-b)
+  let types = 1
+  let result = 0
+  for (i = 1; i < candyType.length; i++) {
+      if (candyType[i] != candyType[i-1]) {
+          types ++
+      }
+  }
+  
+  result = Math.min(types, candyType.length / 2)
+  return result
+};
+
+//This was one of the tests. I made about a 50%. Not great.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
