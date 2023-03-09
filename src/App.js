@@ -1734,6 +1734,30 @@ var distributeCandies = function(candyType) {
 
 //This was one of the tests. I made about a 50%. Not great.
 
+var insert = function(intervals, newInterval) {
+
+  let result = []
+  let start = newInterval[0]
+  let end = newInterval[1]
+
+  for (i = 0; i < intervals.length; i++) {
+      if (intervals[i][1] <  start || intervals[i][0] > end) {
+          result.push(intervals[i])
+      }
+      else {
+          start = Math.min(intervals[i][0], start)
+          console.log(start)
+          end = Math.max(intervals[i][1], end)
+      }
+  }
+  result.push([start, end])
+  result.sort((a,b) => a[0] - b[0])
+
+  return result
+};
+
+//an array of intervals, add a new interval and then combine any overlapping ones
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
