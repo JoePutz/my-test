@@ -1758,6 +1758,23 @@ var insert = function(intervals, newInterval) {
 
 //an array of intervals, add a new interval and then combine any overlapping ones
 
+var lengthOfLastWord = function(s) {
+  let wordLength = 0
+  for (i = s.length -1; i >=0; i--) {
+      if (wordLength === 0 && s[i] === " ") {
+          continue
+      }
+      else if (wordLength !==0 && s[i] === " ") {
+          break
+      }
+      else {
+          wordLength++
+      }
+  }
+  return wordLength
+};
+//Return the word length of the last word in a string. Ignore all unnecessary spaces at the end of the string
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
