@@ -1774,6 +1774,13 @@ var lengthOfLastWord = function(s) {
   return wordLength
 };
 //Return the word length of the last word in a string. Ignore all unnecessary spaces at the end of the string
+//Neat other solution 
+var lengthOfLastWord = function(s) {
+  let a = s.trim().split(' ');
+  return a[a.length-1].length
+};
+//Apparently .trim() automatically cuts off the excess " "
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
