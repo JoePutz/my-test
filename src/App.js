@@ -1781,6 +1781,11 @@ var lengthOfLastWord = function(s) {
 };
 //Apparently .trim() automatically cuts off the excess " "
 
+var mySqrt = function(x) {
+  return Math.floor(Math.sqrt(x))
+};
+//So an wasy one about finding the square root. 
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
