@@ -1852,6 +1852,56 @@ var setZeroes = function(matrix) {
 //Then we go thru the matrix, find 0s, and fill those empty slots in the arrays to corresponding positions on the matrix
 //Then go thru matrix again. if corresponding position in the arrays are 0s, make 'em 0 in matrix
 
+var searchMatrix = function(matrix, target) {
+  let len = matrix.length 
+  let wid = matrix[0].length 
+  if (target < matrix[0][0] || target > matrix[len-1][wid-1]) {
+      return false
+  }
+  if (target === matrix[0][0] || target === matrix[len-1][wid-1]) {
+      return true
+  }
+  for (i = 0; i < len; i++) {
+      if (matrix[i][0] > target) {
+          for (j = 0; j < wid; j++) {
+              if (target === matrix[i-1][j]) {
+                  return true
+              }
+          }
+          return false
+      }
+  }
+  for (z = 0; z < wid; z++ ) {
+      if (target === matrix[len-1][z]) {
+          return true
+      } 
+  }
+  return false
+};
+//Search for a specific target number in a matrix w/ the following properties: nondescending rows and columns
+//SO just checked the 1st number if it's a match, or if the target is out of the matrix
+//Check every 1st number in row to see where the target maybe could be
+//only check the row that could have a potential match
+
+//There is also a much more efficient way of doing essentially the same thing:
+var searchMatrix = function(matrix, target) {
+    for(let el of matrix){
+      if(el[0]<=target&&el[el.length-1]>=target){
+          for(let i = 0; i<el.length;i++){
+              if(el[i]===target){
+                  return true;
+              }
+          }
+      }
+  }
+  return false
+};
+//How this works: for every row in Matrix (or 'el') first check if the target could theoretically be in it
+//if yes go thru the row
+//if all are no, then return false
+//So elegant. 
+
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
