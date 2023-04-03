@@ -1817,6 +1817,41 @@ var climbStairs = function(n) {
 //Turns out the pattern of increasing steps is just the fibonnacci sequence, who knew?
 
 
+var setZeroes = function(matrix) {
+
+  const colZero = Array(matrix[0].length);
+  const rowZero = Array(matrix.length);
+
+  for(let row = 0; row < matrix.length; row++){
+      for(let col = 0; col < matrix[0].length; col++){
+          if(matrix[row][col] === 0){
+              colZero[row] = 0;
+              rowZero[col] = 0;
+          }
+      }
+  }
+
+  for(let row = 0; row < matrix.length; row++){
+      if(colZero[row] === 0){
+          matrix[row] = Array(matrix[0].length).fill(0);
+          continue;
+          // because the whole array is already set to 0,
+          // no need to check each value's column has 0 or not, 
+          // for updating the individual value to 0.
+      }
+      for(let col = 0; col < matrix[0].length; col++){
+          if(rowZero[col] === 0){
+              matrix[row][col] = 0;
+          }
+      }
+  }
+  return matrix;
+}
+//This is a neat trick involving creating an empty array that still has spaces in it.
+//Array(matrix[0].length) creates an empty array that still has enough open slots equal to a row of the matrix
+//Then we go thru the matrix, find 0s, and fill those empty slots in the arrays to corresponding positions on the matrix
+//Then go thru matrix again. if corresponding position in the arrays are 0s, make 'em 0 in matrix
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
