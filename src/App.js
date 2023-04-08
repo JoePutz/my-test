@@ -1901,6 +1901,27 @@ var searchMatrix = function(matrix, target) {
 //if all are no, then return false
 //So elegant. 
 
+var sortColors = function(nums) {
+  var m = 0;
+var n = 0;
+var k = nums.length;
+for (var i = 0; i < k; i++) {
+  if (nums[i] === 0) {
+    nums[i] = 2;
+    nums[n++] = 1;
+    console.log(n)
+    nums[m++] = 0;
+  } else if (nums[i] === 1) {
+    nums[i] = 2;
+    nums[n++] = 1;
+  } else {
+    nums[i] = 2;
+  }
+}
+};
+//this is a neat one. nums[n++] and nums[m++] apparently still go to 0, but then afterward increase the value of n. So it's at position 0 not position 1 after the first pass of 2.
+
+
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
