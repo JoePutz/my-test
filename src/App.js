@@ -1921,7 +1921,29 @@ for (var i = 0; i < k; i++) {
 };
 //this is a neat one. nums[n++] and nums[m++] apparently still go to 0, but then afterward increase the value of n. So it's at position 0 not position 1 after the first pass of 2.
 
+var subsets = function(nums) {
+  let result = [];
+  let temp = [];
+  recursive(nums, 0);
+  return result;
 
+  function recursive(nums, i) {
+      // base case
+      if (i === nums.length) {
+          return result.push([...temp]);
+      }
+      temp.push(nums[i]);
+      recursive(nums, i + 1);
+      temp.pop();
+      recursive(nums, i + 1);
+  }
+};
+//fastest for a recursive function. Find all possible subsets to an array of numbers. So [1, 2] = [[], [1], [2], [1, 2]]
+//So how it works. You have your temp array and answer array they're empty
+//your recursive function checks if you have the full length of the array
+//temp gains the first, goes thru the recursive thing again, essentially getting every number on the array eventually
+//But once done, pops, so removes the last element and goes thru that way. This means there will be a new one for each element
+//very clever
 
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
