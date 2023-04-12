@@ -1945,6 +1945,17 @@ var subsets = function(nums) {
 //But once done, pops, so removes the last element and goes thru that way. This means there will be a new one for each element
 //very clever
 
+var removeDuplicates = function(nums) {
+  for (i = 0; i < nums.length-2; i++) {
+      if (nums[i] === nums[i+2]) {
+          nums.splice(i+2, 1)
+          i--
+      }
+  }
+};
+//removes only the second duplicate in an array of numbers
+//note the nums.length-2 there, which should stop things automatically once we reach the point there can be no additional duplicates.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
