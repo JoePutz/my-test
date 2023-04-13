@@ -1956,6 +1956,21 @@ var removeDuplicates = function(nums) {
 //removes only the second duplicate in an array of numbers
 //note the nums.length-2 there, which should stop things automatically once we reach the point there can be no additional duplicates.
 
+var search = function(nums, target) {
+  // if (nums.includes(target)) {
+  //     return true
+  // }
+  // return false
+  for (i = 0; i < nums.length; i++) {
+      if (nums[i] == target) {
+          return true
+      }
+  }
+  return false
+};
+//Pretty simple a check if something is in the array question. Interestingly, the second version is faster than the .includes() version
+
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
