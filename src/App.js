@@ -1971,6 +1971,19 @@ var search = function(nums, target) {
 //Pretty simple a check if something is in the array question. Interestingly, the second version is faster than the .includes() version
 
 
+var deleteDuplicates = function(head) {
+  var now = head;
+  while (now) {
+      if (now.next && now.next.val === now.val) {
+          now.next = now.next.next;
+      } else {
+          now = now.next;
+      }
+  }
+  return head;
+};
+//remove duplicates from a sorted list. Notice the .next and .next.val framework. I do not like sorted lists.
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
