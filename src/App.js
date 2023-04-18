@@ -1984,6 +1984,60 @@ var deleteDuplicates = function(head) {
 };
 //remove duplicates from a sorted list. Notice the .next and .next.val framework. I do not like sorted lists.
 
+var largestRectangleArea = function(heights) {
+  let answer = 0;
+  let testHeight = 0;
+  
+  for (i = 0; i < heights.length; i++) {
+      let testLength = 1;
+      testHeight = heights[i]
+      for (j = i+1; j < heights.length; j++) {
+          if (testHeight <= heights[j]) {
+              testLength++
+          } else {
+              break
+          }
+      }
+      if (i > 0) {
+          for (k = i - 1; k >= 0; k--) {
+              if (testHeight <= heights[k]) {
+                  testLength++
+              } else {
+                  break
+              }
+          }
+      }
+      
+      let max = testLength * testHeight
+      if (max > answer) {
+          answer = max
+      }
+  }
+  return answer;
+};
+//The goal is to find the largest rectangle in a histogram. This works, but it's too slow
+
+var largestRectangleArea = function(heights) {
+  var len = heights.length;
+  var stack = [];
+  var max = 0;
+  var h = 0;
+  var w = 0;
+  
+  for (var i = 0; i <= len; i++) {
+    while (stack.length && (i === len || heights[i] <= heights[stack[stack.length - 1]])) {
+      h = heights[stack.pop()];
+      w = stack.length === 0 ? i : i - stack[stack.length - 1] - 1;
+      max = Math.max(max, h * w);
+    }
+    stack.push(i);
+  }
+  
+  return max;
+};
+//This is the better answer. It uses an array called stack to create a changing limit of what fits for the largest rectangle
+//Then it gives the answer to the area of that array
+
 const [brettNum, setBrettNum] = useState(0)
 const [oliverNum, setOliverNum] = useState(0)
 const [danNum, setDanNum] = useState(0)
