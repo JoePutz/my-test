@@ -2089,6 +2089,19 @@ socket.onmessage = (event) => {
   }
 }
 
+var merge = function(nums1, m, nums2, n) {
+  nums1.splice(m, n)
+  let j = 0
+  for (i = 0; i < nums2.length; i++) {
+      while (nums2[i] >= nums1[j] ) {
+          j++
+      }
+      nums1.splice(j, 0, nums2[i])
+      j++
+  }
+
+};
+
   let listArray = [
     {
       user: "Brett",
