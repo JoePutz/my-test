@@ -2102,6 +2102,29 @@ var merge = function(nums1, m, nums2, n) {
 
 };
 
+var subsetsWithDup = function(nums) {
+  const result = [[]];
+  nums.sort((a, b) => a - b);
+
+  function subsetMaker(start, set = []) {
+      for(let i = start; i < nums.length; i++) {
+          if(i > start && nums[i] === nums[i - 1]) {
+              continue;
+          }
+          set.push(nums[i]);
+          result.push([...set]);
+          subsetMaker(i + 1, set);
+          set.pop();
+      }
+  }
+  subsetMaker(0);
+  return result;
+}
+//I still have some trouble w/ backtracking functions
+//But this one is exciting, since that line if (i > start && nums[i] === nums[i-1])
+//stops from repetitions ever going into result
+
+
   let listArray = [
     {
       user: "Brett",
