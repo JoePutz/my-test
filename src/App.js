@@ -2124,6 +2124,26 @@ var subsetsWithDup = function(nums) {
 //But this one is exciting, since that line if (i > start && nums[i] === nums[i-1])
 //stops from repetitions ever going into result
 
+var generate = function(numRows) {
+  let ans = [];
+  for (let i = 0; i < numRows; i++) {
+      ans[i] = [];
+      ans[i][0] = 1;
+      for (let j = 1; j < i; j++) {
+          ans[i][j] = ans[i-1][j-1] + ans[i-1][j]
+      }
+      ans[i][i] = 1;
+  }
+  return ans;
+};
+//This just creates Pascal's Triangle: you know:
+//        1
+//      1, 1
+//     1, 2, 1
+//   1, 3, 3, 1
+//  1, 4, 6, 4, 1
+//1, 5, 10, 10, 5, 1
+
 
   let listArray = [
     {
