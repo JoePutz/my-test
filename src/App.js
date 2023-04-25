@@ -2136,13 +2136,63 @@ var generate = function(numRows) {
   }
   return ans;
 };
-//This just creates Pascal's Triangle: you know:
+//This just creates Pascal's Triangle, you know:
 //        1
 //      1, 1
 //     1, 2, 1
 //   1, 3, 3, 1
 //  1, 4, 6, 4, 1
 //1, 5, 10, 10, 5, 1
+
+var getRow = function(rowIndex) {
+  let ans = [];
+      for (let i = 0; i <= rowIndex; i++) {
+          ans[i] = [];
+          ans[i][0] = 1;
+          for (let j = 1; j < i; j++) {
+              ans[i][j] = ans[i-1][j-1] + ans[i-1][j]
+          }
+      ans[i][i] = 1;
+  }
+  return ans[rowIndex];
+};
+//So this one is about getting the single row of a pascal triangle. 
+//I clearly just made the triangle and picked the row. Efficient, but slow
+//Below is the faster method, and very cool
+
+var getRow = function(rowIndex) {
+  var res = [];
+  var i=0;
+  for(i=0; i<= rowIndex; i++){
+      res.unshift(1);
+      for(j=1; j<i; j++){
+          res[j] += res[j+1];
+      }
+  }
+  return res;
+};
+//Let's walk thru it with rowIndex 3
+//i = 0
+//res = [1]
+//j = 1, 1 !< 0 do nothing go back to i
+//i = 1
+//res = [1, 1]
+//j = 1, 1 !< 1 do nothing, back to i
+//i = 2
+//res = [1, 1, 1]
+//j = 1, 1 < 2. 
+//res[1] = 1 + 1
+//res = [1, 2, 1]
+//i = 3 (last one)
+//res = [1, 1, 2, 1]
+//j = 1
+//res[1] = 1 + 2 = 3
+//res = [1, 3, 2, 1]
+//j = 2
+//res[2] = 2 + 1
+//res = [1, 3, 3, 1]
+//J = 3, 3 !< 3. End
+
 
 
   let listArray = [
