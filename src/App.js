@@ -2194,8 +2194,19 @@ var getRow = function(rowIndex) {
 //J = 3, 3 !< 3. End
 
 
-
-  let listArray = [
+var minimumTotal = function(triangle) {
+for (let i = triangle.length-2; i >= 0; i--)
+   for (let j = 0; j < triangle[i].length; j++)
+      triangle[i][j] += Math.min(triangle[i+1][j], triangle[i+1][j+1])
+return triangle[0][0]
+};
+//This is relatively simple. Find the smallest sum that is a path down a triangle. 
+//Easier to find from bottom up. But buttom up actually starts at the second row from the bottom
+//changes that 2nd to last row to show each of the totals from that point down
+//work up
+//then return the top number which should now be the total on the path down
+  
+let listArray = [
     {
       user: "Brett",
       count: brettNum
