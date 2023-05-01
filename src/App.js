@@ -2206,6 +2206,23 @@ return triangle[0][0]
 //work up
 //then return the top number which should now be the total on the path down
   
+
+var maxProfit = function(prices) {
+  let max = 0
+  let base = prices[0]
+  for (i = 1; i < prices.length; i++) {
+      max = Math.max(max, prices[i] - base)
+      if (prices[i] < base) {
+          base = prices[i]
+      }
+  }
+  return max
+};
+//find the max positive difference between two points 
+//fun done in 1 loop
+//essentially use position 0 as your base, but be certain to change that base if there's a smaller number
+//then just check if you made a profit at each individual point from the base.
+
 let listArray = [
     {
       user: "Brett",
