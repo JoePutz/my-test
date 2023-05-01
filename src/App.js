@@ -2223,6 +2223,26 @@ var maxProfit = function(prices) {
 //essentially use position 0 as your base, but be certain to change that base if there's a smaller number
 //then just check if you made a profit at each individual point from the base.
 
+var maxProfit = function(prices) {
+  let base = prices[0]
+  let max = 0
+  let total = 0
+  for (i = 1; i < prices.length; i++) {
+      base = Math.min(base, prices[i])
+      max = Math.max(max, prices[i] - base)
+      if (max > 0 && prices[i+1] < prices[i]) {
+          total = total + max
+          max = 0
+          base = prices[i+1]
+      }
+  }
+  total = total + max
+  return total
+};
+//Same as above but you can buy and sell multiple times
+//This would mean that whenever the price drops you want to sell just before and buy again at the lowest price
+//make certain to add the last holdout to the total
+
 let listArray = [
     {
       user: "Brett",
