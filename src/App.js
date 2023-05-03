@@ -2243,6 +2243,25 @@ var maxProfit = function(prices) {
 //This would mean that whenever the price drops you want to sell just before and buy again at the lowest price
 //make certain to add the last holdout to the total
 
+var isPalindrome = function(s) {
+  s = s.toLowerCase().replace(/[^a-z0-9]/gi, '')
+  let string = ""
+  let pstring = ""
+
+  for (i = 0; i < s.length; i++) {
+      string = string + s[i]
+      pstring = s[i] + pstring
+  }
+  if (pstring === string) {
+      return true
+  } else {
+      return false
+  }
+
+};
+//simple palindrome check
+//.replace(/[^a-z0-9]/gi, '') is interesting. Translating it: 
+//replace everything that is not a thru z 0 thru 9 globally with ""
 let listArray = [
     {
       user: "Brett",
