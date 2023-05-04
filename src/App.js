@@ -2262,6 +2262,31 @@ var isPalindrome = function(s) {
 //simple palindrome check
 //.replace(/[^a-z0-9]/gi, '') is interesting. Translating it: 
 //replace everything that is not a thru z 0 thru 9 globally with ""
+
+
+var longestConsecutive = function(nums) {
+  nums = nums.sort((a, b) => a - b)
+  let res = 0
+  let example = 1
+  for (i = 0; i < nums.length; i++) {
+      if (nums[i] + 1 === nums[i + 1]) {
+          example++
+      } else if (nums[i] === nums[i + 1]) {
+          continue
+      } else {
+          res = Math.max(res, example)
+          example = 1
+      }
+  }
+  return res
+};
+//Find longest range of numbers in an unsorted array. 
+//I sort the array, go thru each number and see if it doesn't skip any places. 
+//Add the running total up for each consecutive number. Then when it breaks compare that to the maximum consecutive numbers
+
+
+
+
 let listArray = [
     {
       user: "Brett",
