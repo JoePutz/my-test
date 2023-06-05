@@ -2284,7 +2284,27 @@ var longestConsecutive = function(nums) {
 //I sort the array, go thru each number and see if it doesn't skip any places. 
 //Add the running total up for each consecutive number. Then when it breaks compare that to the maximum consecutive numbers
 
+var checkStraightLine = function (coordinates) {
+  if (coordinates.length === 2) {
+      return true
+  }
+  let [x1, y1] = coordinates[0]
+  let [x2, y2] = coordinates[1]
+  let k = (y2 - y1) / (x2 - x1)
 
+  for (let i = 2; i < coordinates.length; i++) {
+      const [x, y] = coordinates[i]
+      let k1 = (y - y1) / (x - x1)
+      if (k1 !== k) {
+          if (Math.abs(k) === Infinity) {
+              return Math.abs(k1) === Infinity
+          }
+          return false
+      }
+  }
+  return true
+};
+// given array of coordinates, see if they're all on the same line. k is slope. Beware of infinity/-infinity slope
 
 
 let listArray = [
