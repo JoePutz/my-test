@@ -2322,7 +2322,19 @@ var longestCommonPrefix = function(strs) {
 
   return answer
   }
-  
+
+  var containsDuplicate = function(nums) {
+    nums = nums.sort((a, b) => a - b)
+
+    for (i = 0; i < nums.length; i++) {
+        if (nums[i] === nums[i+1]) {
+            return true
+        }
+    }
+    return false
+};
+// check for duplicate numbers in array
+
 
 let listArray = [
     {
