@@ -2306,6 +2306,23 @@ var checkStraightLine = function (coordinates) {
 };
 // given array of coordinates, see if they're all on the same line. k is slope. Beware of infinity/-infinity slope
 
+var longestCommonPrefix = function(strs) {
+  let answer = ""
+  if(strs === null || strs.length === 0) return answer
+
+  for (let i=0; i < strs[0].length; i++){ 
+      const char = strs[0][i] // loop through all characters of the very first string. 
+
+      for (let j = 1; j < strs.length; j++){ 
+        // loop through all other strings in the array
+          if(strs[j][i] !== char) return answer
+      }
+      answer = answer + char
+  }
+
+  return answer
+  }
+  
 
 let listArray = [
     {
