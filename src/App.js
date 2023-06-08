@@ -2335,6 +2335,14 @@ var longestCommonPrefix = function(strs) {
 };
 // check for duplicate numbers in array
 
+var isAnagram = function(s, t) {
+  s = s.split("").sort().join("")
+  t = t.split("").sort().join("")
+  if (s === t) return true
+  else return false
+};
+//check for anagram.
+
 
 let listArray = [
     {
