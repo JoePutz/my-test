@@ -2343,6 +2343,17 @@ var isAnagram = function(s, t) {
 };
 //check for anagram.
 
+var nextGreatestLetter = function(letters, target) {
+  for (i=0; i < letters.length; i++) {
+      if (target.charCodeAt(0) < letters[i].charCodeAt(0) ) {
+          return letters[i]
+      }
+  }
+  return letters[0]
+};
+//Find the smallest letter higher than target in an array of letters
+//If none exist, return the first letter in the array
+
 
 let listArray = [
     {
