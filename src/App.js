@@ -2354,6 +2354,23 @@ var nextGreatestLetter = function(letters, target) {
 //Find the smallest letter higher than target in an array of letters
 //If none exist, return the first letter in the array
 
+var summaryRanges = function(nums) {
+  let ans = [];
+  let start = 0;
+  for (let i = 0; i < nums.length; i++) {
+      if (nums[i] + 1 !== nums[i + 1] && nums[i] - 1 !== nums[i - 1]) {
+          arr.push("" + nums[i]);
+      } else if (nums[i] + 1 !== nums[i + 1] && nums[i] - 1 === nums[i - 1]) {
+          arr.push("" + start + "->" + nums[i])
+      } else if (nums[i] + 1 === nums[i + 1] && nums[i] - 1 !== nums[i - 1]) {
+          start = nums[i]
+      }
+
+  }
+  return ans;
+};
+//find the ranges given an array of numbers. 
+
 
 let listArray = [
     {
